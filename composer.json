@@ -1,0 +1,24 @@
+{
+	"name": "e2d2-dev/filament-fqn-settings",
+    "description": "Easy management of fqn settings.",
+    "license": "MIT",
+	"require": {
+        "php": ">=8.2",
+        "filament/filament": "^3.3",
+        "e2d2-dev/laravel-fqn-settings": "*"
+    },
+	"autoload": {
+		"psr-4": {
+			"Betta\\Filament\\FqnSettings\\": "src/",
+			"Betta\\Filament\\FqnSettings\\Tests\\": "tests/"
+		}
+	},
+	"minimum-stability": "beta",
+	"extra": {
+		"laravel": {
+			"providers": [
+				"Betta\\Filament\\FqnSettings\\Providers\\FilamentFqnSettingsServiceProvider"
+			]
+		}
+	}
+}
