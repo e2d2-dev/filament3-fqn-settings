@@ -1,5 +1,5 @@
 {
-	"name": "e2d2-dev/filament-fqn-settings",
+	"name": "e2d2-dev/filament3-fqn-settings",
     "description": "Easy management of fqn settings.",
     "license": "MIT",
 	"require": {
