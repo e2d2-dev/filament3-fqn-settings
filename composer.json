@@ -13,7 +13,7 @@
 			"Betta\\Filament\\FqnSettings\\Tests\\": "tests/"
 		}
 	},
-	"minimum-stability": "beta",
+	"minimum-stability": "dev",
 	"extra": {
 		"laravel": {
 			"providers": [
