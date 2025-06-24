@@ -17,6 +17,8 @@ class EncryptSection extends Section
 
         $this->icon('heroicon-o-finger-print');
 
+        $this->columnSpan(1);
+
         $this->schema([
             Toggle::make('encrypt')
                 ->onIcon('heroicon-o-check')

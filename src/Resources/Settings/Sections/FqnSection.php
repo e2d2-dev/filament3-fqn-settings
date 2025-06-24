@@ -15,6 +15,8 @@ class FqnSection extends Section
 
         $this->heading('FQN');
 
+        $this->columnSpan(1);
+
         $this->visibleOn('edit');
 
         $this->icon('heroicon-o-academic-cap');

@@ -17,6 +17,8 @@ class KeySection extends Section
 
         $this->hiddenOn('edit');
 
+        $this->columnSpan(1);
+
         $this->schema([
             TextInput::make('key')
                 ->hiddenLabel()

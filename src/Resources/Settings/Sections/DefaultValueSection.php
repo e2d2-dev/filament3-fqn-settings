@@ -17,6 +17,8 @@ class DefaultValueSection extends Section
 
         $this->icon('heroicon-o-light-bulb');
 
+        $this->columnSpan(1);
+
         $this->schema([
             TextInput::make('default')
                 ->disabledOn('edit')

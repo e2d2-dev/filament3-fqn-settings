@@ -25,6 +25,8 @@ class ValueSection extends Section
                 __('filament-fqn-settings::state.MarkedLost');
         });
 
+        $this->columnSpan(1);
+
         $this->icon('heroicon-o-arrow-up-tray');
 
         $this->schema([

@@ -20,16 +20,16 @@ trait HasFqnSettingComponents
         }
     }
 
-    protected function getComponentData(): array
+    public function getComponentData(): array
     {
         $data = [];
 
         /** @var SettingAttribute $component */
         foreach ($this->initializedSettingComponents as $component) {
-            $data = array_merge($data, Arr::undot($component->getValues()));
+            $data = array_merge($data, $component->getValues());
         }
 
-        return $data;
+        return Arr::undot($data);
     }
 
     public function getSchemaComponents(): array

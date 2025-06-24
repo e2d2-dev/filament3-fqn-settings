@@ -13,6 +13,8 @@ class TypeSection extends Section
 
         $this->heading(__('filament-fqn-settings::field.ReturnType'));
 
+        $this->columnSpan(1);
+
         $this->icon('heroicon-o-arrow-left');
 
         $this->schema([
