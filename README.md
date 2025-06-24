@@ -12,10 +12,13 @@ Every entry is auto-discovered!
 
 ## Content
 - [File Structure](#file-structure)
-- [Auto Discovery](#auto-discovery)
 
 - [Installation](#installation)
 - [Register Plugin](#register-to-panel)
+
+- [Pages Auto Discovery](#pages-auto-discovery)
+- [Settings Auto Discovery](#settings-auto-discovery)
+- [Package Auto Discovery](#package-auto-discovery)
 
 - [Setting Value Resource](#setting-value-resource)
 
@@ -36,15 +39,13 @@ App
     │    └── Schemas
     │        └── {{ Schemas }}
     └── Settings
-        └── MaxDate
+        └── MaxDateSetting // Example Setting
 ```
 
 - One panel can have multiple setting pages
 - One page can have multiple setting schemas
 - One schema can have multiple setting values
 
-## Auto Discovery
-Pages in App\Filament\Settings\Pages will be discovered automagically. 
 
 ## Installation
 The Package is available for Filament v3 and v4.
@@ -55,15 +56,52 @@ The Package is available for Filament v3 and v4.
 composer require e2d2-dev/filament-fqn-settings
 ```
 ### Register to Panel
-Add this into your Filament `PannelProvider` class `panel()` to register the ValueResource.
+Add ```FqnSettingsPlugin::make()``` into your Filament `PannelProvider` class `panel()` to register the ValueResource.
 
 ```php
 use Betta\Filament\FqnSettings\FqnSettingsPlugin;
+use Filament\Panel;
+use Filament\PanelProvider;
 
-$panel
-    ->plugins([
-      FqnSettingsPlugin::make(),
-    ]);
+class AdminPanelProvider extends PanelProvider
+{
+    public function panel(Panel $panel): Panel
+    {
+        return $panel
+            ->plugins([
+                 FqnSettingsPlugin::make(),
+            ]);
+    ```
+
+## Pages Auto Discovery
+Pages in App\Filament\Settings\Pages will be discovered automagically. SettingPage is a regular Filament Page and can be added to the ```pages()``` method.
+
+## Settings Auto Discovery
+More Directories can be added to the config file.
+
+```php
+"config/fqn-settings.php"
+
+    'discover' => [
+        // 'app-modules/settings/src/SomePackage' => 'Vendor\\Package\\Settings',
+    ],
+
+```
+
+## Package Auto Discovery
+Directories can also be added in the ```register()``` method inside Service Providers
+
+```php
+use Betta\Settings\Settings;
+
+class SomeServiceProvider extends ServiceProvider
+{
+    public function register(): void
+    {
+        Settings::path(
+            'path/to/files',
+            'Vendor\\Package'
+        );
 ```
 
 ## Create Setting Command
@@ -117,6 +155,19 @@ class BaseSettings extends SettingSchema
    }
 ```
 
+## $get() and $set()
+Both method do need a statepath to work properly. This can be achieved by using ```getStatePath()``` once again.
+
+```php
+use \Filament\Schemas\Components\Utilities\Get;
+
+    TextInput::make(SomeValue::getStatePath()),
+    
+    TextInput::make(OtherValue::getStatePath())
+      ->visible(fn(Get $get) => $get(SomeValue::getStatePath())),
+```
+
+
 ## Modifying Schema Return Type 
 A Schema can be returned as plain array, Section, Group, Fieldset, Tab and Tabs by changing the ```$returnAs``` Property. An Enum is provided.
 
@@ -168,13 +219,6 @@ use \Filament\Schemas\Components\Tabs\Tab;
 ## Schema - Tabs
 Methods ending with "Tab" will be called automagically. The function name will be converted to title using ```str($name)->title()```
 
-## Mutate data before save
-Same as on resource pages.
-
-```php
-    public function mutateSaveDataUsing(array $data): array
-```
-
 
 ## Create Page Command
 Creates a new setting page in App\Filament\Settings.
@@ -193,8 +237,51 @@ One page can hold many setting schemas. Register them in the ```$settingComponen
     ];
 ```
 
+## Mutating data before save
+Same as on resource pages.
+
+```php
+    public function mutateSaveDataUsing(array $data): array
+```
+
+
+## Fill Additional Data
+Add more data to the Page
+
+```php
+use Betta\Filament\FqnSettings\Pages\SettingPage;
+
+class BaseSettings extends SettingPage
+{
+    public function fillAdditionalData(): array
+    {
+         return  [
+            //
+         ]
+    }
+```
+
+## Add further Components before/after the Schema
+
+```php
+use Betta\Filament\FqnSettings\Pages\SettingPage;
+
+class BaseSettings extends SettingPage
+{
+    public function beforeSchema(): array
+
+    public function afterSchema(): array
+```
+
+## Lost Settings
+When a Class was moved and is no longer available, the setting will persist in the database, entry will be marked as lost.
+
+## Encrypted Settings
+Are marked with a green Fingerprint Icon.
+
 
 ## Setting Value Resource
+
 ### Sync Action
 Calls artisan settings:sync
 
@@ -204,6 +291,8 @@ When your app is running in state "local", settings can be created as database a
 #### Cache Action
 The value can be purged from Cache.
 
+# Contributing
+More Ideas and PR's are welcome.
 
 # Credits
 - Whole Filament Team :)
