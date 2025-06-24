@@ -3,8 +3,8 @@
 namespace Betta\Filament\FqnSettings\Values\Concerns\Return;
 
 use Betta\Filament\FqnSettings\Pages\Concerns\HasTabs;
-use Filament\Forms\Components\Tabs;
-use Filament\Forms\Components\Tabs\Tab;
+use Filament\Schemas\Components\Tabs;
+use Filament\Schemas\Components\Tabs\Tab;
 use ReflectionClass;
 
 trait AsTabs
@@ -30,10 +30,13 @@ trait AsTabs
             })
             ->map(function (string $name) {
                 return $this->{$name}(
-                    Tab::make(
-                        str($name)->remove('Tab')->title()
-                    )
+                    $this->tab(str($name)->remove('Tab')->title())
                 );
             })->flatten()->toArray();
+    }
+
+    public function tab(string $label): Tab
+    {
+        return Tab::make($label);
     }
 }

@@ -3,7 +3,7 @@
 namespace Betta\Filament\FqnSettings\Resources\Settings\Sections;
 
 use Betta\Filament\FqnSettings\Resources\Settings\Schemas\Fields\TypeSelect;
-use Filament\Forms\Components\Section;
+use Filament\Schemas\Components\Section;
 
 class TypeSection extends Section
 {

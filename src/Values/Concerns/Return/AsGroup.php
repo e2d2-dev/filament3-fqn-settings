@@ -2,7 +2,7 @@
 
 namespace Betta\Filament\FqnSettings\Values\Concerns\Return;
 
-use Filament\Forms\Components\Group;
+use Filament\Schemas\Components\Group;
 
 trait AsGroup
 {
@@ -18,6 +18,6 @@ trait AsGroup
 
     public function asGroup(): Group
     {
-        return $this->modifyTabUsing($this->group());
+        return $this->modifyGroupUsing($this->group());
     }
 }

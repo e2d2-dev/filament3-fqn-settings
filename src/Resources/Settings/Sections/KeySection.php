@@ -2,8 +2,8 @@
 
 namespace Betta\Filament\FqnSettings\Resources\Settings\Sections;
 
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 
 class KeySection extends Section
 {

@@ -2,7 +2,8 @@
 
 namespace Betta\Filament\FqnSettings\Values\Concerns\Return;
 
-use Filament\Forms\Components\Fieldset;
+
+use Filament\Schemas\Components\Fieldset;
 
 trait AsFieldset
 {

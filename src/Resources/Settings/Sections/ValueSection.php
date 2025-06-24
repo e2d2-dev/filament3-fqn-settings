@@ -3,8 +3,8 @@
 namespace Betta\Filament\FqnSettings\Resources\Settings\Sections;
 
 use Betta\Settings\Models\FqnSetting;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Schemas\Components\Section;
 
 class ValueSection extends Section
 {
@@ -20,9 +20,11 @@ class ValueSection extends Section
             }
             $class = $record->fqn;
 
-            return class_exists($class) ?
+            $output = class_exists($class) ?
                 __('filament-fqn-settings::state.Cached').': '.$class::get() :
                 __('filament-fqn-settings::state.MarkedLost');
+
+            return str($output)->limit(30);
         });
 
         $this->icon('heroicon-o-arrow-up-tray');

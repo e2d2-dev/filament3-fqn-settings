@@ -2,7 +2,8 @@
 
 namespace Betta\Filament\FqnSettings\Values\Concerns\Return;
 
-use Filament\Forms\Components\Section;
+
+use Filament\Schemas\Components\Section;
 
 trait AsSection
 {

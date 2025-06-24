@@ -8,7 +8,7 @@ use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\KeyColumn;
 use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\LostColumn;
 use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\TypeColumn;
 use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\ValueColumn;
-use Filament\Tables\Actions\DeleteBulkAction;
+use Filament\Actions\DeleteBulkAction;
 use Filament\Tables\Table;
 
 class ValuesTable

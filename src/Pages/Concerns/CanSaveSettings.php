@@ -30,7 +30,7 @@ trait CanSaveSettings
 
     public function save(): void
     {
-        $content = $this->form->validate();
+        $content = $this->content->validate();
         $content = $this->mutateSaveDataUsing($content);
 
         try {

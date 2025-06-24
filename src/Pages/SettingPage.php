@@ -6,39 +6,40 @@ use Betta\Filament\FqnSettings\Pages\Concerns\CanExpandSchema;
 use Betta\Filament\FqnSettings\Pages\Concerns\CanSaveSettings;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasActions;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasColumns;
+use Betta\Filament\FqnSettings\Pages\Concerns\HasContent;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasForm;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasFqnSettingComponents;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasNavigation;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasSettingsSlug;
 use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Filament\Pages\Page;
+use Filament\Schemas\Schema;
 
 /**
- * @property Form $form
+ * @property Schema $content
  */
-class SettingPage extends Page implements \Filament\Actions\Contracts\HasActions, HasForms
+abstract class SettingPage extends Page implements \Filament\Actions\Contracts\HasActions, HasForms
 {
     use CanExpandSchema;
     use CanSaveSettings;
     use HasActions;
     use HasColumns;
-    use HasForm;
+    use HasContent;
     use HasFqnSettingComponents;
     use HasNavigation;
     use HasSettingsSlug;
 
     protected array $settingComponents = [];
 
-    protected static string $view = 'filament-fqn-settings::filament.pages.page';
+    protected string $view = 'filament-panels::pages.page';
 
-    protected static ?string $navigationIcon = 'heroicon-o-cog-6-tooth';
+    protected static \BackedEnum|null|string $navigationIcon = 'heroicon-o-cog-6-tooth';
 
     public ?array $data;
 
     public function mount(): void
     {
-        $this->form->fill([
+        $this->content->fill([
             ...$this->fillAdditionalData(),
             ...$this->getComponentData(),
         ]);

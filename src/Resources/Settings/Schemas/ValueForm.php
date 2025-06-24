@@ -8,13 +8,13 @@ use Betta\Filament\FqnSettings\Resources\Settings\Sections\FqnSection;
 use Betta\Filament\FqnSettings\Resources\Settings\Sections\KeySection;
 use Betta\Filament\FqnSettings\Resources\Settings\Sections\TypeSection;
 use Betta\Filament\FqnSettings\Resources\Settings\Sections\ValueSection;
-use Filament\Forms\Form;
+use Filament\Schemas\Schema;
 
 class ValueForm
 {
-    public static function configure(Form $form): Form
+    public static function configure(Schema $schema): Schema
     {
-        return $form
+        return $schema
             ->schema([
                 FqnSection::make(),
                 TypeSection::make(),

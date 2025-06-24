@@ -9,8 +9,9 @@ use Betta\Filament\FqnSettings\Resources\Settings\Pages\ListValues;
 use Betta\Filament\FqnSettings\Resources\Settings\Schemas\ValueForm;
 use Betta\Filament\FqnSettings\Resources\Settings\Tables\ValuesTable;
 use Betta\Settings\Models\FqnSetting;
-use Filament\Forms\Form;
 use Filament\Resources\Resource;
+use Filament\Schemas\Schema;
+use Filament\Support\Icons\Heroicon;
 use Filament\Tables\Table;
 
 class ValueResource extends Resource
@@ -19,11 +20,11 @@ class ValueResource extends Resource
 
     protected static ?string $model = FqnSetting::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-list-bullet';
+    protected static string|\BackedEnum|null $navigationIcon = Heroicon::ListBullet;
 
-    public static function form(Form $form): Form
+    public static function form(Schema $schema): Schema
     {
-        return ValueForm::configure($form);
+        return ValueForm::configure($schema);
     }
 
     public static function table(Table $table): Table

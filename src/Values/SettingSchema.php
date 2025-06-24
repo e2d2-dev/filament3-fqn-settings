@@ -7,7 +7,7 @@ use Betta\Filament\FqnSettings\Values\Concerns\CanReturnAs;
 use Betta\Filament\FqnSettings\Values\Concerns\HasCommonAttributes;
 use Betta\Filament\FqnSettings\Values\Concerns\HasValues;
 
-class SettingSchema
+abstract class SettingSchema
 {
     use CanReturnAs;
     use HasCommonAttributes;
@@ -22,7 +22,7 @@ class SettingSchema
     public function schema(): array
     {
         return [
-            //
+
         ];
     }
 }
