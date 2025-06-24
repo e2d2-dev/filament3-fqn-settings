@@ -14,6 +14,6 @@ class FqnColumn extends TextColumn
 
         $this->label(false);
 
-        $this->icon('heroicon-o-academic-cap');
+        $this->icon(config('filament-fqn-settings.icon.Fqn'));
     }
 }

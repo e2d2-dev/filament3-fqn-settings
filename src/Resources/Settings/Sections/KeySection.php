@@ -13,7 +13,7 @@ class KeySection extends Section
 
         $this->heading(__('filament-fqn-settings::field.Key'));
 
-        $this->icon('heroicon-o-key');
+        $this->icon(config('filament-fqn-settings.icon.Key'));
 
         $this->hiddenOn('edit');
 

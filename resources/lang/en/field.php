@@ -1,13 +1,15 @@
 <?php
 
 return [
-    'Key' => 'Key',
-    'Value' => 'Value',
+    'Cache' => 'Cache',
     'Default' => 'Default',
     'DefaultValue' => 'Default Value',
-    'Type' => 'Type',
-    'FqnFull' => 'Full Qualified Name',
-    'ReturnType' => 'Return Type',
     'Encryption' => 'Encryption',
-    'Cache' => 'Cache',
+    'FqnFull' => 'Full Qualified Name',
+    'Key' => 'Key',
+    'Lost' => 'Vanished',
+    'Nullable' => 'Nullable',
+    'ReturnType' => 'Return Type',
+    'Type' => 'Type',
+    'Value' => 'Value',
 ];

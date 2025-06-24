@@ -19,6 +19,8 @@ class EncryptSection extends Section
 
         $this->columnSpan(1);
 
+        $this->visible(fn($get) => $get('type') != 'bool');
+
         $this->schema([
             Toggle::make('encrypt')
                 ->onIcon('heroicon-o-check')

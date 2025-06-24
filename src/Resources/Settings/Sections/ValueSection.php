@@ -5,6 +5,7 @@ namespace Betta\Filament\FqnSettings\Resources\Settings\Sections;
 use Betta\Settings\Models\FqnSetting;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 
 class ValueSection extends Section
 {
@@ -18,16 +19,25 @@ class ValueSection extends Section
             if (! $record) {
                 return null;
             }
+
             $class = $record->fqn;
 
-            return class_exists($class) ?
-                __('filament-fqn-settings::state.Cached').': '.$class::get() :
-                __('filament-fqn-settings::state.MarkedLost');
+            if(! class_exists($class)){
+                return __('filament-fqn-settings::state.MarkedLost');
+            }
+
+            $value = $class::get();
+
+            if($record->type == 'bool') {
+                $value = $value ? 'true' : 'false';
+            }
+
+            return  __('filament-fqn-settings::state.Cached').': '.$value;
         });
 
         $this->columnSpan(1);
 
-        $this->icon('heroicon-o-arrow-up-tray');
+        $this->icon(config('filament-fqn-settings.icon.Value'));
 
         $this->schema([
             TextInput::make('value')
@@ -37,6 +47,10 @@ class ValueSection extends Section
                 // ->string(fn($get) => $get('type') == 'string')
                 ->integer(fn ($get) => $get('type') == 'integer')
                 ->required(),
+
+            Toggle::make('hidden_value')
+                ->visible(fn($get) => $get('type') == 'bool')
+                ->hiddenLabel(),
         ]);
     }
 }

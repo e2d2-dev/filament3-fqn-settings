@@ -13,6 +13,8 @@ class FilamentFqnSettingsServiceProvider extends PackageServiceProvider
     {
         $package->name('filament-fqn-settings');
 
+        $this->mergeConfigFrom(__DIR__.'/../../config/filament-fqn-settings.php', 'filament-fqn-settings');
+
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'filament-fqn-settings');
 
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'filament-fqn-settings');

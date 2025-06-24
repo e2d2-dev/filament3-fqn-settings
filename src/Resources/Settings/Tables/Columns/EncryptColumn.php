@@ -13,12 +13,16 @@ class EncryptColumn extends IconColumn
 
         $this->boolean();
 
+        $this->grow(false);
+
         $this->label(false);
 
-        $this->tooltip(fn (FqnSetting $record) => $record->isEncrypted() ?
-            __('filament-fqn-settings::state.Encrypted') :
-            __('filament-fqn-settings::state.NotEncrypted'));
+        $this->tooltip(fn (?FqnSetting $record) =>
+            $record->isEncrypted() ? __('filament-fqn-settings::state.Encrypted') : ''
+        );
 
-        $this->icon('heroicon-o-finger-print');
+        $this->trueIcon(config('filament-fqn-settings.icon.Encrypted'));
+
+        $this->falseIcon(false);
     }
 }

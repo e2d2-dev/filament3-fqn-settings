@@ -14,7 +14,7 @@ class KeyColumn extends TextColumn
 
         $this->label(false);
 
-        $this->icon('heroicon-o-key');
+        $this->icon(config('filament-fqn-settings.icon.Key'));
 
         $this->tooltip(__('filament-fqn-settings::field.Key'));
     }

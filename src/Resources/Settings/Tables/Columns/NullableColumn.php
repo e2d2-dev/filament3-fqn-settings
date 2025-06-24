@@ -4,20 +4,20 @@ namespace Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns;
 
 use Filament\Tables\Columns\IconColumn;
 
-class LostColumn extends IconColumn
+class NullableColumn extends IconColumn
 {
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->color('danger');
+        $this->tooltip(__('filament-fqn-settings::field.Nullable'));
 
         $this->boolean();
 
         $this->label(false);
 
-        $this->tooltip(fn ($record) => __('filament-fqn-settings::state.Lost').' '.$record->lost_at?->diffForHumans());
+        $this->trueIcon(config('filament-fqn-settings.icon.Nullable'));
 
-        $this->icon(config('filament-fqn-settings.icon.Lost'));
+        $this->falseIcon(false);
     }
 }

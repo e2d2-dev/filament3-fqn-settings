@@ -14,7 +14,7 @@ class TypeColumn extends TextColumn
 
         $this->label(false);
 
-        $this->icon('heroicon-o-arrow-left');
+        $this->icon('');
 
         $this->badge();
     }

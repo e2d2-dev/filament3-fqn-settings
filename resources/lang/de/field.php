@@ -1,13 +1,15 @@
 <?php
 
 return [
-    'Key' => 'Schlüssel',
-    'Value' => 'Wert',
-    'Default' => 'Standard',
-    'Type' => 'Typ',
-    'FqnFull' => 'Voll Qualifizierter Name',
-    'DefaultValue' => 'Standardwert',
-    'ReturnType' => 'Rückgabewert',
-    'Encryption' => 'Verschlüsselung',
     'Cache' => 'Puffer',
+    'Default' => 'Standard',
+    'DefaultValue' => 'Standardwert',
+    'Encryption' => 'Verschlüsselung',
+    'FqnFull' => 'Voll Qualifizierter Name',
+    'Key' => 'Schlüssel',
+    'Lost' => 'Verloren',
+    'Nullable' => 'Null erlaubt',
+    'ReturnType' => 'Rückgabewert',
+    'Type' => 'Typ',
+    'Value' => 'Wert',
 ];
