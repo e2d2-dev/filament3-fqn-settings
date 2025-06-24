@@ -43,7 +43,8 @@ trait CanSaveSettings
                 $fqn = str($statepath)
                     ->beforeLast('.')
                     ->title()
-                    ->replace('_', '\\')
+                    ->replace('__', '\\')
+                    ->replace('_', '')
                     ->append('\\')
                     ->append($fqnEnd)
                     ->toString();

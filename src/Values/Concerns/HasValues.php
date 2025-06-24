@@ -10,7 +10,7 @@ trait HasValues
 
         foreach ($this->fqnSettings as $fqn) {
 
-            $path = str($fqn)->beforeLast('\\')->replace('\\', ' ')->snake();
+            $path = str($fqn)->beforeLast('\\')->replace('\\', '_')->snake();
             $key = str($fqn)->afterLast('\\')->snake();
 
             $this->data["{$path}.{$key}"] = $fqn::get();
