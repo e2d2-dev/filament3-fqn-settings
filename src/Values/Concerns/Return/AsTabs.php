@@ -30,13 +30,18 @@ trait AsTabs
             })
             ->map(function (string $name) {
                 return $this->{$name}(
-                    $this->tab(str($name)->remove('Tab')->title())
+                    $this->tab($this->getTitleFromName($name))
                 );
             })->flatten()->toArray();
     }
 
+    public function getTitleFromName(string $name): string
+    {
+        return str($name)->remove('Tab')->title();
+    }
+
     public function tab(string $label): Tab
     {
-        return Tab::make($label);
+        return Tab::make($this->getTitleFromName($label));
     }
 }

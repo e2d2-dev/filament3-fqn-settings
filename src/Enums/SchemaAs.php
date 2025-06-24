@@ -6,6 +6,7 @@ enum SchemaAs: string
 {
     case Section = 'section';
     case Tabs = 'tabs';
+    case Tab = 'tab';
     case Group = 'group';
     case Fieldset = 'fieldset';
     case Array = 'array';

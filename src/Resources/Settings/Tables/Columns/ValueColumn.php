@@ -15,6 +15,8 @@ class ValueColumn extends TextColumn
 
         $this->formatStateUsing(fn (FqnSetting $record) => $record->isEncrypted() ? '*** '.__('filament-fqn-settings::state.Encrypted').' ***' : $record->value);
 
+        $this->limit('30');
+
         $this->searchable();
 
         $this->grow();
