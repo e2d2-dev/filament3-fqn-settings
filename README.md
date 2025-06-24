@@ -1,5 +1,5 @@
 # Filament FQN Settings
-Create, manage and keep track of your settings with ease.  
+Create, manage and keep track of your settings with ease.
 
 
 # Introduction
@@ -71,7 +71,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                  FqnSettingsPlugin::make(),
             ]);
-    ```
+```
 
 ## Pages Auto Discovery
 Pages in App\Filament\Settings\Pages will be discovered automagically. SettingPage is a regular Filament Page and can be added to the ```pages()``` method.
@@ -79,8 +79,14 @@ Pages in App\Filament\Settings\Pages will be discovered automagically. SettingPa
 ## Settings Auto Discovery
 More Directories can be added to the config file.
 
+```shell
+  // Publish the config file
+
+    php artisan vendor:publish --tag=laravel-fqn-settings-config
+```
+
 ```php
-"config/fqn-settings.php"
+"{config_path}/fqn-settings.php"
 
     'discover' => [
         // 'app-modules/settings/src/SomePackage' => 'Vendor\\Package\\Settings',
@@ -168,7 +174,7 @@ use \Filament\Schemas\Components\Utilities\Get;
 ```
 
 
-## Modifying Schema Return Type 
+## Modifying Schema Return Type
 A Schema can be returned as plain array, Section, Group, Fieldset, Tab and Tabs by changing the ```$returnAs``` Property. An Enum is provided.
 
 ```php
@@ -286,7 +292,7 @@ Are marked with a green Fingerprint Icon.
 Calls artisan settings:sync
 
 ### Create Page
-When your app is running in state "local", settings can be created as database and as file. 
+When your app is running in state "local", settings can be created as database and as file.
 
 #### Cache Action
 The value can be purged from Cache.
