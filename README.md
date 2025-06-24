@@ -71,7 +71,7 @@ class AdminPanelProvider extends PanelProvider
             ->plugins([
                  FqnSettingsPlugin::make(),
             ]);
-    ```
+```
 
 ## Pages Auto Discovery
 Pages in App\Filament\Settings\Pages will be discovered automagically. SettingPage is a regular Filament Page and can be added to the ```pages()``` method.
@@ -79,8 +79,14 @@ Pages in App\Filament\Settings\Pages will be discovered automagically. SettingPa
 ## Settings Auto Discovery
 More Directories can be added to the config file.
 
+```shell
+  // Publish the config file
+
+    php artisan vendor:publish --tag=laravel-fqn-settings-config
+```
+
 ```php
-"config/fqn-settings.php"
+"{config_path}/fqn-settings.php"
 
     'discover' => [
         // 'app-modules/settings/src/SomePackage' => 'Vendor\\Package\\Settings',
