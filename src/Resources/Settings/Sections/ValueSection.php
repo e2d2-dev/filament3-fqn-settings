@@ -15,7 +15,7 @@ class ValueSection extends Section
         $this->heading(__('filament-fqn-settings::field.Value'));
 
         $this->description(function (?FqnSetting $record) {
-            if(! $record) {
+            if (! $record) {
                 return null;
             }
             $class = $record->fqn;

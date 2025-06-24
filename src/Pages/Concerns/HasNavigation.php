@@ -2,8 +2,6 @@
 
 namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
-use UnitEnum;
-
 trait HasNavigation
 {
     use HasBreadcrumb;
@@ -22,10 +20,10 @@ trait HasNavigation
 
     public static function getTitleFromClassname(): string
     {
-        return str(static::class)->classBasename()->remove('Settings');
+        return str(static::class)->classBasename()->remove('Settings')->remove('Setup');
     }
 
-    public static function getNavigationGroup(): string|null
+    public static function getNavigationGroup(): ?string
     {
         return __('filament-fqn-settings::model.Settings');
     }

@@ -6,7 +6,6 @@ use Betta\Filament\FqnSettings\Values\SettingSchema;
 use Betta\Settings\Commands\Filegenerators\ClassGenerator;
 use Nette\PhpGenerator\ClassType;
 use Nette\PhpGenerator\Literal;
-use Nette\PhpGenerator\Method;
 
 class SettingSchemaClassGenerator extends ClassGenerator
 {
@@ -28,7 +27,7 @@ class SettingSchemaClassGenerator extends ClassGenerator
     public function getImports(): array
     {
         return [
-            SettingSchema::class
+            SettingSchema::class,
         ];
     }
 
@@ -44,14 +43,13 @@ class SettingSchemaClassGenerator extends ClassGenerator
     public function addSchemaMethod(): string
     {
         return new Literal(
-            <<<PHP
+            <<<'PHP'
                 return [
                     //
                 ];
                 PHP
         );
     }
-
 
     protected function addPropertiesToClass(ClassType $class): void
     {
@@ -65,7 +63,6 @@ class SettingSchemaClassGenerator extends ClassGenerator
     {
         return class_basename($this->getFqn());
     }
-
 
     public function getFqn(): string
     {

@@ -5,7 +5,6 @@ namespace Betta\Filament\FqnSettings\Resources\Settings\Actions;
 use Betta\Settings\Settings;
 use Filament\Actions\Action;
 use Filament\Support\Colors\Color;
-use Filament\Support\Icons\Heroicon;
 
 class SyncAction extends Action
 {

@@ -15,6 +15,6 @@ class FqnField extends Placeholder
 
         $this->hiddenLabel();
 
-        $this->content(fn(FqnSetting $record) => $record->fqn);
+        $this->content(fn (FqnSetting $record) => $record->fqn);
     }
 }

@@ -3,7 +3,6 @@
 namespace Betta\Filament\FqnSettings\Resources\Settings\Actions;
 
 use Filament\Actions\Action;
-use Filament\Support\Icons\Heroicon;
 
 class CacheSettingResetAction extends Action
 {

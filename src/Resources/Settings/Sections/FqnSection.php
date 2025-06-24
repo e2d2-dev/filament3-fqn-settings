@@ -4,7 +4,6 @@ namespace Betta\Filament\FqnSettings\Resources\Settings\Sections;
 
 use Betta\Filament\FqnSettings\Resources\Settings\Schemas\Fields\FqnField;
 use Filament\Forms\Components\Section;
-use Filament\Support\Icons\Heroicon;
 
 class FqnSection extends Section
 {

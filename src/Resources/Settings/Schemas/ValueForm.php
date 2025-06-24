@@ -9,7 +9,6 @@ use Betta\Filament\FqnSettings\Resources\Settings\Sections\KeySection;
 use Betta\Filament\FqnSettings\Resources\Settings\Sections\TypeSection;
 use Betta\Filament\FqnSettings\Resources\Settings\Sections\ValueSection;
 use Filament\Forms\Form;
-use Filament\Schemas\Schema;
 
 class ValueForm
 {

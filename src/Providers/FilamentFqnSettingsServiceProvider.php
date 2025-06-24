@@ -15,8 +15,6 @@ class FilamentFqnSettingsServiceProvider extends PackageServiceProvider
 
         $this->loadTranslationsFrom(__DIR__.'/../../resources/lang', 'filament-fqn-settings');
 
-        $this->mergeConfigFrom(__DIR__.'/../../config/filament-fqn-settings.php', 'filament-fqn-settings');
-
         $this->loadViewsFrom(__DIR__.'/../../resources/views', 'filament-fqn-settings');
     }
 

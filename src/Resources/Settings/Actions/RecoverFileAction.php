@@ -4,7 +4,6 @@ namespace Betta\Filament\FqnSettings\Resources\Settings\Actions;
 
 use Betta\Settings\Models\FqnSetting;
 use Filament\Actions\Action;
-use Filament\Support\Icons\Heroicon;
 
 class RecoverFileAction extends Action
 {
@@ -29,12 +28,12 @@ class RecoverFileAction extends Action
 
         $this->successNotificationTitle(__('filament-fqn-settings::notification.ClassFileWasCreated'));
 
-        $this->modalDescription(fn() => $this->isInAppNameSpace() ?
+        $this->modalDescription(fn () => $this->isInAppNameSpace() ?
             __('filament-fqn-settings::description.CreatePhpFile') :
             __('filament-fqn-settings::description.OutsideAppNamespace')
         );
 
-        $this->modalSubmitAction(fn() => $this->isInAppNameSpace() ?
+        $this->modalSubmitAction(fn () => $this->isInAppNameSpace() ?
             parent::getModalSubmitAction() :
             false
         );

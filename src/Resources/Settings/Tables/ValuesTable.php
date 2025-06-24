@@ -2,7 +2,6 @@
 
 namespace Betta\Filament\FqnSettings\Resources\Settings\Tables;
 
-use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\DefaultValueColumn;
 use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\EncryptColumn;
 use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\FqnColumn;
 use Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns\KeyColumn;

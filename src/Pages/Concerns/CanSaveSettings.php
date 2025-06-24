@@ -8,7 +8,6 @@ trait CanSaveSettings
 {
     use CanSendNotifications;
 
-
     public function getCachedFormActions(): array
     {
         return [
@@ -24,9 +23,15 @@ trait CanSaveSettings
             ->action('save');
     }
 
+    public function mutateSaveDataUsing(array $data): array
+    {
+        return $data;
+    }
+
     public function save(): void
     {
         $content = $this->form->validate();
+        $content = $this->mutateSaveDataUsing($content);
 
         try {
             collect($content['data'])->mapWithKeys(function ($value, $namespace) {
@@ -50,5 +55,6 @@ trait CanSaveSettings
 
         } catch (\Exception $exception) {
             $this->failure($exception->getMessage());
-        }}
+        }
+    }
 }

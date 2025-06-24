@@ -2,8 +2,9 @@
 
 namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
+use Betta\Filament\FqnSettings\Values\SettingSchema;
+use Betta\Settings\SettingAttribute;
 use Illuminate\Support\Arr;
-use Values\DemoSetting;
 
 trait HasFqnSettingComponents
 {
@@ -12,7 +13,7 @@ trait HasFqnSettingComponents
     protected function registerComponents(): void
     {
         foreach ($this->settingComponents as $component) {
-            if(class_exists($component)){
+            if (class_exists($component)) {
                 $instance = app($component);
                 $this->initializedSettingComponents[$component] = $instance;
             }
@@ -22,7 +23,8 @@ trait HasFqnSettingComponents
     protected function getComponentData(): array
     {
         $data = [];
-        /** @var DemoSetting $component */
+
+        /** @var SettingAttribute $component */
         foreach ($this->initializedSettingComponents as $component) {
             $data = array_merge($data, Arr::undot($component->getValues()));
         }
@@ -32,7 +34,7 @@ trait HasFqnSettingComponents
 
     public function getSchemaComponents(): array
     {
-        return collect($this->initializedSettingComponents)->map(function ($component) {
+        return collect($this->initializedSettingComponents)->map(function (SettingSchema $component) {
 
             return $component->getComponents();
 

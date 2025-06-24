@@ -5,7 +5,6 @@ namespace Betta\Filament\FqnSettings\Commands\FileGenerators;
 use Betta\Filament\FqnSettings\Pages\SettingPage;
 use Betta\Settings\Commands\Filegenerators\ClassGenerator;
 use Nette\PhpGenerator\ClassType;
-use Nette\PhpGenerator\Method;
 
 class SettingPageClassGenerator extends ClassGenerator
 {
@@ -46,7 +45,6 @@ class SettingPageClassGenerator extends ClassGenerator
     {
         return class_basename($this->getFqn());
     }
-
 
     public function getFqn(): string
     {
