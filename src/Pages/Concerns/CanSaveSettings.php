@@ -3,6 +3,7 @@
 namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
 use Filament\Actions\Action;
+use Illuminate\Support\Arr;
 
 trait CanSaveSettings
 {
@@ -34,20 +35,19 @@ trait CanSaveSettings
         $content = $this->mutateSaveDataUsing($content);
 
         try {
-            collect($content['data'])->mapWithKeys(function ($value, $namespace) {
-                $key = str(array_key_first($value))->studly();
+            collect(Arr::dot($content['data']))->each(function ($value, string $statepath) {
+                $fqnEnd = str($statepath)
+                    ->afterLast('.')
+                    ->studly();
 
-                $namespace = str($namespace)
+                $fqn = str($statepath)
+                    ->beforeLast('.')
                     ->title()
                     ->replace('_', '\\')
                     ->append('\\')
-                    ->append($key)
+                    ->append($fqnEnd)
                     ->toString();
 
-                $value = $value[array_key_first($value)];
-
-                return [$namespace => $value];
-            })->each(function ($value, $fqn) {
                 $fqn::set($value);
             });
 
