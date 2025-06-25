@@ -17,6 +17,7 @@ trait CanReturnAs
     use AsGroup;
     use AsSection;
     use AsTabs;
+    use HasCommonAttributes;
 
     /**
      * @return array|Section|Group|Tab|Fieldset

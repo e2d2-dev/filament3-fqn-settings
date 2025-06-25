@@ -10,7 +10,6 @@ use Betta\Filament\FqnSettings\Values\Concerns\HasValues;
 class SettingSchema
 {
     use CanReturnAs;
-    use HasCommonAttributes;
     use HasValues;
 
     protected array $data = [];

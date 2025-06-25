@@ -9,6 +9,8 @@ trait AsSection
     public function section(): Section
     {
         return Section::make()
+            ->collapsed($this->collapsed())
+            ->persistCollapsed($this->persistCollapsed())
             ->columnSpan($this->columnSpan())
             ->columns($this->columns())
             ->heading($this->getHeading())
