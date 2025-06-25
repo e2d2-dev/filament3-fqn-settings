@@ -2,9 +2,10 @@
 
 namespace Betta\Filament\FqnSettings\Pages;
 
+use Betta\Filament\FqnSettings\Enums\SchemaAs;
 use Betta\Filament\FqnSettings\Pages\Concerns\CanExpandSchema;
 use Betta\Filament\FqnSettings\Pages\Concerns\CanSaveSettings;
-use Betta\Filament\FqnSettings\Pages\Concerns\HasActions;
+use Betta\Filament\FqnSettings\Pages\Concerns\HasFormActions;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasColumns;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasForm;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasFqnSettingComponents;
@@ -21,7 +22,7 @@ class SettingPage extends Page implements \Filament\Actions\Contracts\HasActions
 {
     use CanExpandSchema;
     use CanSaveSettings;
-    use HasActions;
+    use HasFormActions;
     use HasColumns;
     use HasForm;
     use HasFqnSettingComponents;

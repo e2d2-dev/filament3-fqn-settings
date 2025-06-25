@@ -2,8 +2,10 @@
 
 namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
+use Betta\Filament\FqnSettings\Enums\SchemaAs;
 use Betta\Filament\FqnSettings\Values\SettingSchema;
 use Betta\Settings\SettingAttribute;
+use Filament\Forms\Components\Tabs;
 use Illuminate\Support\Arr;
 
 trait HasFqnSettingComponents
@@ -39,5 +41,14 @@ trait HasFqnSettingComponents
             return $component->getComponents();
 
         })->flatten()->toArray();
+    }
+
+    public function asTabs(array $components = []): array
+    {
+        return [
+            Tabs::make()
+                ->columnSpanFull()
+                ->schema($components),
+        ];
     }
 }

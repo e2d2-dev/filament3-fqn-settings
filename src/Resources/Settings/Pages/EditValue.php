@@ -50,6 +50,7 @@ class EditValue extends EditRecord
     {
         if($data['type'] == 'bool') {
             $data['value'] = (bool)$data['hidden_value'];
+            unset($data['hidden_value']);
             $data['encrypt'] = false;
         }
 

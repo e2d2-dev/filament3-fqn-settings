@@ -4,7 +4,7 @@ namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
 use Filament\Actions\Action;
 
-trait HasActions
+trait HasFormActions
 {
     protected function getSaveFormAction(): Action
     {

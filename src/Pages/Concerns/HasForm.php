@@ -2,6 +2,8 @@
 
 namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
+use Betta\Filament\FqnSettings\Enums\SchemaAs;
+
 trait HasForm
 {
     protected function getForms(): array
@@ -12,6 +14,7 @@ trait HasForm
             'form' => $this->makeForm()
                 ->schema([
                     ...$this->beforeSchema(),
+                    ...$this->asTabs(),
                     ...$this->getSchemaComponents(),
                     ...$this->afterSchema(),
                 ])
