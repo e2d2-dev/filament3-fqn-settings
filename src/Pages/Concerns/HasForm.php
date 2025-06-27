@@ -2,8 +2,6 @@
 
 namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
-use Betta\Filament\FqnSettings\Enums\SchemaAs;
-
 trait HasForm
 {
     protected function getForms(): array

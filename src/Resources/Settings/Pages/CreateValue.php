@@ -19,8 +19,8 @@ class CreateValue extends CreateRecord
 
     protected function saveBoolWhenSelected(array $data): array
     {
-        if($data['type'] == 'bool') {
-            $data['value'] = $data['default'] = (bool)$data['hidden_value'];
+        if ($data['type'] == 'bool') {
+            $data['value'] = $data['default'] = (bool) $data['hidden_value'];
             $data['encrypt'] = false;
         }
 

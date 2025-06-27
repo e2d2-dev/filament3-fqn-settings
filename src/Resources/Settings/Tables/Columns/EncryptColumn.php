@@ -17,8 +17,7 @@ class EncryptColumn extends IconColumn
 
         $this->label(false);
 
-        $this->tooltip(fn (?FqnSetting $record) =>
-            $record->isEncrypted() ? __('filament-fqn-settings::state.Encrypted') : ''
+        $this->tooltip(fn (?FqnSetting $record) => $record->isEncrypted() ? __('filament-fqn-settings::state.Encrypted') : ''
         );
 
         $this->trueIcon(config('filament-fqn-settings.icon.Encrypted'));

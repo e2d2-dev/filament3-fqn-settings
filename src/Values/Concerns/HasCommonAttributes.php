@@ -37,12 +37,12 @@ trait HasCommonAttributes
         return $columns;
     }
 
-    public function collapsed(bool | Closure $condition = false): bool | Closure
+    public function collapsed(bool|Closure $condition = false): bool|Closure
     {
         return $condition;
     }
 
-    public function persistCollapsed(bool | Closure $condition = false): bool | Closure
+    public function persistCollapsed(bool|Closure $condition = false): bool|Closure
     {
         return $condition;
     }

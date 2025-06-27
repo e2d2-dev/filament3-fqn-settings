@@ -2,6 +2,7 @@
 
 namespace Betta\Filament\FqnSettings\Resources\Settings\Sections;
 
+use Betta\Filament\FqnSettings\Resources\Settings\Forms\Actions\CacheSettingResetFormAction;
 use Betta\Settings\Models\FqnSetting;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\TextInput;
@@ -15,6 +16,10 @@ class ValueSection extends Section
 
         $this->heading(__('filament-fqn-settings::field.Value'));
 
+        $this->headerActions([
+            CacheSettingResetFormAction::make(),
+        ]);
+
         $this->description(function (?FqnSetting $record) {
             if (! $record) {
                 return null;
@@ -22,17 +27,17 @@ class ValueSection extends Section
 
             $class = $record->fqn;
 
-            if(! class_exists($class)){
+            if (! class_exists($class)) {
                 return __('filament-fqn-settings::state.MarkedLost');
             }
 
             $value = $class::get();
 
-            if($record->type == 'bool') {
+            if ($record->type == 'bool') {
                 $value = $value ? 'true' : 'false';
             }
 
-            return  __('filament-fqn-settings::state.Cached').': '.$value;
+            return __('filament-fqn-settings::state.Cached').': '.$value;
         });
 
         $this->columnSpan(1);
@@ -49,7 +54,7 @@ class ValueSection extends Section
                 ->required(),
 
             Toggle::make('hidden_value')
-                ->visible(fn($get) => $get('type') == 'bool')
+                ->visible(fn ($get) => $get('type') == 'bool')
                 ->hiddenLabel(),
         ]);
     }

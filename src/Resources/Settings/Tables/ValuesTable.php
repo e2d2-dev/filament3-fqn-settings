@@ -48,7 +48,7 @@ class ValuesTable
                         'int' => 'Integer',
                         'float' => 'Float',
                         'string' => 'String',
-                    ])
+                    ]),
             ]);
     }
 }

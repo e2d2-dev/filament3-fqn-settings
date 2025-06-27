@@ -20,7 +20,6 @@ class EditValue extends EditRecord
     protected function getHeaderActions(): array
     {
         return [
-            CacheSettingResetAction::make(),
             CacheSettingAction::make(),
             RecoverFileAction::make(),
             DeleteAction::make()
@@ -31,15 +30,15 @@ class EditValue extends EditRecord
 
     protected function mutateFormDataBeforeFill(array $data): array
     {
-        if($data['type'] == 'bool') {
+        if ($data['type'] == 'bool') {
             $data['hidden_value'] = $data['value'];
         }
-        if($data['encrypt']) {
+        if ($data['encrypt']) {
             $data['value'] = Crypt::decrypt($data['value']);
         }
+
         return $data;
     }
-
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
@@ -48,8 +47,8 @@ class EditValue extends EditRecord
 
     protected function saveBoolWhenSelected(array $data): array
     {
-        if($data['type'] == 'bool') {
-            $data['value'] = (bool)$data['hidden_value'];
+        if ($data['type'] == 'bool') {
+            $data['value'] = (bool) $data['hidden_value'];
             unset($data['hidden_value']);
             $data['encrypt'] = false;
         }

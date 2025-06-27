@@ -8,12 +8,13 @@ trait HasSettingsSlug
     {
         $str = str(parent::getSlug());
 
-        if($str->contains('-setup')) {
+        if ($str->contains('-setup')) {
             return $str->remove('-setup')->prepend('setup/');
         }
-        if($str->endsWith('-settings')){
+        if ($str->endsWith('-settings')) {
             return $str->remove('-settings')->prepend('settings/');
-        };
+        }
+
         return $str->prepend('settings/');
     }
 }
