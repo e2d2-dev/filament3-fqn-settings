@@ -7,16 +7,16 @@ use Betta\Settings\SettingAttribute;
 use Filament\Forms\Components\Tabs;
 use Illuminate\Support\Arr;
 
-trait HasFqnSettingComponents
+trait HasFqnSettingSchemas
 {
-    protected array $initializedSettingComponents = [];
+    protected array $initializedSettingSchemas = [];
 
     protected function registerComponents(): void
     {
         foreach ($this->settingComponents as $component) {
             if (class_exists($component)) {
                 $instance = app($component);
-                $this->initializedSettingComponents[$component] = $instance;
+                $this->initializedSettingSchemas[$component] = $instance;
             }
         }
     }
@@ -25,8 +25,8 @@ trait HasFqnSettingComponents
     {
         $data = [];
 
-        /** @var SettingAttribute $component */
-        foreach ($this->initializedSettingComponents as $component) {
+        foreach ($this->initializedSettingSchemas as $component) {
+            /** @var SettingSchema $component */
             $data = array_merge($data, $component->getValues());
         }
 
@@ -35,7 +35,7 @@ trait HasFqnSettingComponents
 
     public function getSchemaComponents(): array
     {
-        return collect($this->initializedSettingComponents)->map(function (SettingSchema $component) {
+        return collect($this->initializedSettingSchemas)->map(function (SettingSchema $component) {
 
             return $component->getComponents();
 

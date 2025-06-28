@@ -7,9 +7,10 @@ use Betta\Filament\FqnSettings\Pages\Concerns\CanSaveSettings;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasColumns;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasForm;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasFormActions;
-use Betta\Filament\FqnSettings\Pages\Concerns\HasFqnSettingComponents;
+use Betta\Filament\FqnSettings\Pages\Concerns\HasFqnSettingSchemas;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasNavigation;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasSettingsSlug;
+use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
@@ -17,14 +18,14 @@ use Filament\Pages\Page;
 /**
  * @property Form $form
  */
-class SettingPage extends Page implements \Filament\Actions\Contracts\HasActions, HasForms
+class SettingPage extends Page implements HasActions, HasForms
 {
     use CanExpandSchema;
     use CanSaveSettings;
     use HasColumns;
     use HasForm;
     use HasFormActions;
-    use HasFqnSettingComponents;
+    use HasFqnSettingSchemas;
     use HasNavigation;
     use HasSettingsSlug;
 

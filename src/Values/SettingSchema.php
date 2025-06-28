@@ -15,7 +15,7 @@ class SettingSchema
 
     protected array $fqnSettings = [];
 
-    protected \BackedEnum $returnAs = SchemaAs::Tabs;
+    protected \BackedEnum $returnAs = SchemaAs::Section;
 
     public function schema(): array
     {

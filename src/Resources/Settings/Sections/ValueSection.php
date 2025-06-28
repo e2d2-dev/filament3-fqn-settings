@@ -46,7 +46,7 @@ class ValueSection extends Section
 
         $this->schema([
             TextInput::make('value')
-                ->hiddenLabel()
+                // ->hiddenLabel()
                 ->live()
                 ->hidden(fn ($get) => $get('type') == 'bool')
                 // ->string(fn($get) => $get('type') == 'string')
