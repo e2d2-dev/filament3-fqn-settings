@@ -5,7 +5,8 @@
 	"require": {
         "php": ">=8.2",
         "filament/filament": "^3.3",
-        "e2d2-dev/laravel-fqn-settings": "^1.0.9"
+        "e2d2-dev/laravel-fqn-settings": "^1.0.9",
+        "e2d2-dev/filament-fqn-settings": "^v3.0.2"
     },
 	"autoload": {
 		"psr-4": {

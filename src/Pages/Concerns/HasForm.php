@@ -12,7 +12,7 @@ trait HasForm
             'form' => $this->makeForm()
                 ->schema([
                     ...$this->beforeSchema(),
-                    //...$this->asTabs(),
+                    // ...$this->asTabs(),
                     ...$this->getSchemaComponents(),
                     ...$this->afterSchema(),
                 ])
