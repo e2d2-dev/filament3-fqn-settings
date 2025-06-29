@@ -314,7 +314,7 @@ use App\Filament\Settings\Schemas\OneMoreSchema;
 
 class SettingsPage extends SettingPage
 {
-    protected array $settingComponents = [
+    protected array $schemas = [
         SomeSchema::class,
         OneMoreSchema::class,
     ];
