@@ -8,7 +8,7 @@ use Illuminate\Support\ServiceProvider;
 
 class FilamentFqnSettingsServiceProvider extends ServiceProvider
 {
-    protected function boot(): void
+    public function boot(): void
     {
         $this->mergeConfigFrom(__DIR__.'/../../config/filament-fqn-settings.php', 'filament-fqn-settings');
 
