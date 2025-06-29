@@ -25,6 +25,7 @@ class TypeSelect extends ToggleButtons
             'int' => 'int',
             'bool' => 'bool',
             'float' => 'float',
+            'array' => 'array',
         ]);
     }
 }

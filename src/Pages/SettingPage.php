@@ -2,6 +2,7 @@
 
 namespace Betta\Filament\FqnSettings\Pages;
 
+use App\Settings\ArrayValue;
 use Betta\Filament\FqnSettings\Pages\Concerns\CanExpandSchema;
 use Betta\Filament\FqnSettings\Pages\Concerns\CanSaveSettings;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasColumns;
@@ -11,6 +12,7 @@ use Betta\Filament\FqnSettings\Pages\Concerns\HasFqnSettingSchemas;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasNavigation;
 use Betta\Filament\FqnSettings\Pages\Concerns\HasSettingsSlug;
 use Filament\Actions\Contracts\HasActions;
+use Filament\Forms\Components\Repeater;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Pages\Page;
@@ -29,7 +31,7 @@ class SettingPage extends Page implements HasActions, HasForms
     use HasNavigation;
     use HasSettingsSlug;
 
-    protected array $settingComponents = [];
+    protected array $schemas = [];
 
     protected static string $view = 'filament-fqn-settings::filament.pages.page';
 

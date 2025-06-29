@@ -2,6 +2,8 @@
 
 namespace Betta\Filament\FqnSettings\Pages\Concerns;
 
+use App\Settings\Aaa;
+use Betta\Settings\SettingAttribute;
 use Filament\Actions\Action;
 use Illuminate\Support\Arr;
 
@@ -31,11 +33,14 @@ trait CanSaveSettings
 
     public function save(): void
     {
-        $content = $this->form->validate();
+        $this->form->validate();
+
+        $content = $this->fetchValues($this->form->getState());
+
         $content = $this->mutateSaveDataUsing($content);
 
         try {
-            collect(Arr::dot($content['data']))->each(function ($value, string $statepath) {
+            collect(Arr::dot($content))->each(function ($value, string $statepath) {
                 $fqnEnd = str($statepath)
                     ->afterLast('.')
                     ->studly();
@@ -49,6 +54,7 @@ trait CanSaveSettings
                     ->append($fqnEnd)
                     ->toString();
 
+                /** @var SettingAttribute $fqn */
                 $fqn::set($value);
             });
 
@@ -57,5 +63,17 @@ trait CanSaveSettings
         } catch (\Exception $exception) {
             $this->failure($exception->getMessage());
         }
+    }
+
+    protected function fetchValues(array $data): array
+    {
+        $return = [];
+
+        foreach ($data as $path => $attributes) {
+            foreach ($attributes as $fqnEnd => $v) {
+                $return[$path][$fqnEnd] = is_array($v) ? json_encode($v) : $v;
+            }
+        }
+        return $return;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace Betta\Filament\FqnSettings\Resources\Settings\Tables\Columns;
 
+use Betta\Settings\Models\FqnSetting;
 use Filament\Tables\Columns\IconColumn;
 
 class NullableColumn extends IconColumn
@@ -10,7 +11,7 @@ class NullableColumn extends IconColumn
     {
         parent::setUp();
 
-        $this->tooltip(__('filament-fqn-settings::field.Nullable'));
+        $this->tooltip(fn(FqnSetting $record) => $record->isNullable() ? __('filament-fqn-settings::field.Nullable') : '');
 
         $this->boolean();
 

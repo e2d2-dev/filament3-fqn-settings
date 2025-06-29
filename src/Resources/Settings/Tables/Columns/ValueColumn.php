@@ -13,10 +13,17 @@ class ValueColumn extends TextColumn
 
         $this->label(false);
 
-        $this->formatStateUsing(fn (FqnSetting $record) => $record->isEncrypted() ? '*** '.__('filament-fqn-settings::state.Encrypted').' ***' : $record->value);
+        $this->formatStateUsing(fn (FqnSetting $record) => $this->getValue($record));
 
         $this->searchable();
 
         $this->grow();
+    }
+
+    protected function getValue(FqnSetting $record): string
+    {
+        if($record->isEncrypted()) return '*** '.__('filament-fqn-settings::state.Encrypted').' ***';
+        if($record->type == 'array') return 'array';
+        return $record->value;
     }
 }

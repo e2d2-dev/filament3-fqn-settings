@@ -31,13 +31,26 @@ class EditValue extends EditRecord
         if ($data['type'] == 'bool') {
             $data['hidden_value'] = $data['value'];
         }
-
+        if ($data['type'] == 'array') {
+            $data['hidden_array'] = $data['value'];
+        }
         return $data;
     }
 
     protected function mutateFormDataBeforeSave(array $data): array
     {
+        $data = $this->saveJsonWhenArray($data);
         return $this->saveBoolWhenSelected($data);
+    }
+
+    protected function saveJsonWhenArray(array $data): array
+    {
+        if ($data['type'] == 'array') {
+            $data['value'] = $data['hidden_array'];
+            unset($data['hidden_array']);
+        }
+
+        return $data;
     }
 
     protected function saveBoolWhenSelected(array $data): array

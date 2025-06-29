@@ -11,9 +11,7 @@ class FqnSection extends Section
     {
         parent::setUp();
 
-        $this->description(__('filament-fqn-settings::field.FqnFull'));
-
-        $this->heading('FQN');
+        $this->heading(__('filament-fqn-settings::field.FqnFull'));
 
         $this->columnSpan(1);
 

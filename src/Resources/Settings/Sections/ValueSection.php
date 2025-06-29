@@ -5,6 +5,7 @@ namespace Betta\Filament\FqnSettings\Resources\Settings\Sections;
 use Betta\Filament\FqnSettings\Resources\Settings\Forms\Actions\CacheSettingResetFormAction;
 use Betta\Settings\Models\FqnSetting;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Components\Toggle;
 
@@ -33,11 +34,13 @@ class ValueSection extends Section
 
             $value = $class::get();
 
-            if ($record->type == 'bool') {
-                $value = $value ? 'true' : 'false';
-            }
+            $matched = match($record->type){
+                'bool' => $value ? 'true' : 'false',
+                'array' => 'array',
+                default => $value,
+            };
 
-            return __('filament-fqn-settings::state.Cached').': '.$value;
+            return __('filament-fqn-settings::state.Cached').': '.$matched;
         });
 
         $this->columnSpan(1);
@@ -48,10 +51,18 @@ class ValueSection extends Section
             TextInput::make('value')
                 // ->hiddenLabel()
                 ->live()
-                ->hidden(fn ($get) => $get('type') == 'bool')
+                ->hidden(fn ($get) => match ($get('type')){
+                    'bool' => true,
+                    'array' => true,
+                    default => false,
+                })
                 // ->string(fn($get) => $get('type') == 'string')
                 ->integer(fn ($get) => $get('type') == 'integer')
                 ->required(),
+
+            Textarea::make('hidden_array')
+                ->hiddenLabel()
+                ->visible(fn ($get) => $get('type') == 'array'),
 
             Toggle::make('hidden_value')
                 ->visible(fn ($get) => $get('type') == 'bool')

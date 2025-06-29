@@ -12,7 +12,7 @@ trait HasFqnSettingSchemas
 
     protected function registerComponents(): void
     {
-        foreach ($this->settingComponents as $component) {
+        foreach ($this->schemas as $component) {
             if (class_exists($component)) {
                 $instance = app($component);
                 $this->initializedSettingSchemas[$component] = $instance;
